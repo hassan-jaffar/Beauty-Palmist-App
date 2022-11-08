@@ -72,7 +72,7 @@ export default function ServiceDetailPage({ route }) {
       }}
     >
       <Card style={{ padding: 40, borderRadius: 20, width: 0.9*width }}>
-        <Image source={{uri: `http://localhost:3000/${val.image}`}} />
+        <Image source={{uri: `http://192.168.1.14:3000/${val.image}`}} />
         <Text
           style={{ fontSize: 28, fontWeight: "bold", marginBottom: 10 }}
         >

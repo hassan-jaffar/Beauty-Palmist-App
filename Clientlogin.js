@@ -29,7 +29,7 @@ export default function Clientlogin() {
     console.log(values);
 
     axios
-      .post("http://192.168.1.14:3000/api/users/login", {
+      .post("http://192.168.1.6:3000/api/users/login", {
         email: values.email,
         password: values.password,
       })
@@ -60,7 +60,7 @@ export default function Clientlogin() {
     navigation.navigate("Choosesignuptype");
   };
   var width = Dimensions.get("window").width;
-  var height = Dimensions.get("window").height;
+  var height = Dimensions.get("window").height * 1.1;
   return (
     <ImageBackground
       source={

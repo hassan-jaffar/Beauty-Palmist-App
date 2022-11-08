@@ -21,7 +21,7 @@ export default function Choosesignuptype() {
     navigation.navigate("ClientSignup");
   };
   var width = Dimensions.get("window").width;
-  var height = Dimensions.get("window").height;
+  var height = Dimensions.get("window").height * 1.1;
   return (
     <SafeAreaView style={{ height: height }}>
       <ImageBackground
@@ -39,9 +39,7 @@ export default function Choosesignuptype() {
             height: height,
           }}
         >
-          <Text style={{ textAlign: "center", color: "", fontSize: 30 }}>
-            SIGN UP
-          </Text>
+    
           <Card
             style={{
               padding: 20,
@@ -54,7 +52,7 @@ export default function Choosesignuptype() {
               source={
                 {uri: "https://csspoint101.com/wp-content/uploads/2020/10/Data-Analyst.gif"}
               }
-              style={{ width: width, height: 200 }}
+              style={{ width: width*0.8, height: 200 }}
             ></Image>
             <Button
               style={{
@@ -73,7 +71,7 @@ export default function Choosesignuptype() {
               source={
                 {uri: "https://s3.ap-south-1.amazonaws.com/gyanrays.com/assets/corporate1.gif"}
               }
-              style={{ width: width, height: 200 }}
+              style={{ width: width*0.8, height: 200 }}
             ></Image>
             <Button
               style={{

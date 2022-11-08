@@ -111,7 +111,7 @@ export default function ServiceCategory({ route }) {
                 }}
               >
                 <Image
-                  source={{uri: `http://localhost:3000/${val.image}`}}
+                  source={{uri: `http://192.168.1.14:3000/${val.image}`}}
                   style={{ width: width, height: 200 }}
                 ></Image>
                 <Text

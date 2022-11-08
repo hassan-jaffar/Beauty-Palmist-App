@@ -7,7 +7,8 @@ import {
   Drawer,
   SafeAreaView,
   Image,
-  Dimensions
+  Dimensions,
+  ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
@@ -48,60 +49,22 @@ export default function BusinessDashboard() {
           backgroundColor: "#ffe4e4",
         }}
       >
-        <Text style={{ textAlign: "center", color: "", fontSize: 30 }}>
-          Name:{detail.name}
-        </Text>
-        <Card
-          style={{
-            padding: 40,
-            borderRadius: 20,
-            width: 0.9*width,
-            marginBottom: 30,
-            marginTop: 30,
-          }}
-        >
-          <Image
-            source={{uri: require("./assets/booking.gif")}}
-            style={{ width: width, height: 300 }}
-          ></Image>
-          <Text
+        <ScrollView>
+          {/* <Text style={{ textAlign: "center", color: "", fontSize: 30 }}>
+            Name:{detail.name}
+          </Text> */}
+          <Card
             style={{
-              fontWeight: "bold",
-              fontSize: 24,
-              marginBottom: 10,
+              padding: 40,
+              borderRadius: 20,
+              width: 0.9 * width,
+              marginBottom: 30,
+              marginTop: 30,
             }}
           >
-            Bookings
-          </Text>
-          <Text
-            style={{
-              fontWeight: "bold",
-              fontSize: 16,
-              marginBottom: 10,
-            }}
-          >
-            View Booking Schedules and Requests
-          </Text>
-          <Button
-            mode="contained"
-            style={{ backgroundColor: "#FF69B4" }}
-            onPress={() => movess()}
-          >
-            Manage
-          </Button>
-        </Card>
-        <Card
-          style={{
-            padding: 40,
-            borderRadius: 20,
-            width: 0.9 * width,
-            marginBottom: 30,
-          }}
-        >
-          <View style={{ display: "flex", flexDirection: "column" }}>
             <Image
-              source={{uri: require("./assets/service.gif")}}
-              style={{ width: width, height: 300 }}
+              source={require("./assets/booking.gif")}
+              style={{ width: width/1.4, height: 300 }}
             ></Image>
             <Text
               style={{
@@ -110,7 +73,7 @@ export default function BusinessDashboard() {
                 marginBottom: 10,
               }}
             >
-              Services
+              Bookings
             </Text>
             <Text
               style={{
@@ -119,57 +82,97 @@ export default function BusinessDashboard() {
                 marginBottom: 10,
               }}
             >
-              View and Update your services
+              View Booking Schedules and Requests
             </Text>
             <Button
               mode="contained"
               style={{ backgroundColor: "#FF69B4" }}
-              onPress={() => move()}
+              onPress={() => movess()}
             >
               Manage
             </Button>
-          </View>
-        </Card>
-        <Card
-          style={{
-            padding: 40,
-            borderRadius: 20,
-            width: 0.9*width,
-            marginBottom: 30,
-          }}
-        >
-          <View style={{ display: "flex", flexDirection: "column" }}>
-            <Image
-              source={{uri: require("./assets/settings.gif")}}
-              style={{ width: width, height: 300 }}
-            ></Image>
-            <Text
-              style={{
-                fontWeight: "bold",
-                fontSize: 24,
-                marginBottom: 10,
-              }}
-            >
-              Profile Settings
-            </Text>
-            <Text
-              style={{
-                fontWeight: "bold",
-                fontSize: 16,
-                marginBottom: 10,
-              }}
-            >
-              Keep your Profile Information Up to Date
-            </Text>
-            <Button
-              mode="contained"
-              style={{ backgroundColor: "#FF69B4" }}
-              onPress={() => moves()}
-            >
-              Manage
-            </Button>
-          </View>
-        </Card>
+          </Card>
+          <Card
+            style={{
+              padding: 40,
+              borderRadius: 20,
+              width: 0.9 * width,
+              marginBottom: 30,
+            }}
+          >
+            <View style={{ display: "flex", flexDirection: "column" }}>
+              <Image
+                source={require("./assets/service.gif")}
+                style={{ width: width/1.4, height: 300 }}
+              ></Image>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 24,
+                  marginBottom: 10,
+                }}
+              >
+                Services
+              </Text>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 16,
+                  marginBottom: 10,
+                }}
+              >
+                View and Update your services
+              </Text>
+              <Button
+                mode="contained"
+                style={{ backgroundColor: "#FF69B4" }}
+                onPress={() => move()}
+              >
+                Manage
+              </Button>
+            </View>
+          </Card>
+          <Card
+            style={{
+              padding: 40,
+              borderRadius: 20,
+              width: 0.9 * width,
+              marginBottom: 70,
+            }}
+          >
+            <View style={{ display: "flex", flexDirection: "column" }}>
+              <Image
+                source={require("./assets/settings.gif")}
+                style={{ width: width/1.4, height: 300 }}
+              ></Image>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 24,
+                  marginBottom: 10,
+                }}
+              >
+                Profile Settings
+              </Text>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 16,
+                  marginBottom: 10,
+                }}
+              >
+                Keep your Profile Information Up to Date
+              </Text>
+              <Button
+                mode="contained"
+                style={{ backgroundColor: "#FF69B4" }}
+                onPress={() => moves()}
+              >
+                Manage
+              </Button>
+            </View>
+          </Card>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );

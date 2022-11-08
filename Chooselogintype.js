@@ -21,9 +21,9 @@ export default function Chooselogintype() {
     navigation.navigate('BusinessLogin')
   }
   var width = Dimensions.get("window").width;
-  var height = Dimensions.get("window").height;
+  var height = Dimensions.get("window").height * 1.1;
   return (
-    <SafeAreaView style={{ height: height }}>
+    <SafeAreaView>
       <ScrollView>
         <ImageBackground
           source={{
@@ -40,9 +40,7 @@ export default function Chooselogintype() {
               height: height,
             }}
           >
-            <Text style={{ textAlign: "center", color: "", fontSize: 30 }}>
-              LOGIN
-            </Text>
+          
             <Card
               style={{
                 padding: 20,
@@ -55,7 +53,7 @@ export default function Chooselogintype() {
                 source={{
                   uri: "https://csspoint101.com/wp-content/uploads/2020/10/team.gif",
                 }}
-                style={{ width: width, height: 200 }}
+                style={{ width: width*0.8, height: 200 }}
               ></Image>
               <Button
                 style={{
@@ -74,7 +72,7 @@ export default function Chooselogintype() {
                 source={{
                   uri: "https://csspoint101.com/wp-content/uploads/2020/10/Data-Vis.gif",
                 }}
-                style={{ width: width, height: 200 }}
+                style={{ width: width*0.8, height: 200 }}
               ></Image>
               <Button
                 style={{

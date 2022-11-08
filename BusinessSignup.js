@@ -8,17 +8,21 @@ import {
   SafeAreaView,
   ImageBackground,
   Dimensions,
+  ScrollView,
+  LogBox
 } from "react-native";
 
 import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
-import React from "react";
+import React, { useEffect } from "react";
 import * as Yup from "yup";
 import { ErrorMessage, Formik } from "formik";
 import Category from "./Services/services/CategoryServices";
 import UerServices from "./Services/services/UserServices";
 import bussnessServices from "./Services/services/bussnessuser";
+
+
 
 export default function BusinessSignup() {
   const navigation = useNavigation();
@@ -38,6 +42,9 @@ export default function BusinessSignup() {
   const [valuess, setValuess] = React.useState([]);
   const [images, setImages] = React.useState();
   const [item, setItem] = React.useState([]);
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+}, [])
   // const move = () => {
   //   navigation.navigate("BusinessLogin");
   // };
@@ -168,7 +175,7 @@ export default function BusinessSignup() {
     }
   };
   var width = Dimensions.get("window").width;
-  var height = Dimensions.get("window").height;
+  var height = Dimensions.get("window").height*1.1;
   return (
     <SafeAreaView>
       <ImageBackground
@@ -190,11 +197,13 @@ export default function BusinessSignup() {
             style={{
               padding: 40,
               borderRadius: 20,
+              height: height/1.3,
               width: 0.9 * width,
               marginTop: 70,
               marginBottom: 70,
             }}
           >
+          <ScrollView>
             <Text
               style={{
                 fontWeight: "bold",
@@ -276,7 +285,7 @@ export default function BusinessSignup() {
                     style={styles.Textfields}
                   ></TextInput>
                   <ErrorMessage name="email" />
-                  <View style={{ marginBottom: 100 }}>
+                  <View style={{ marginBottom: 10 }}>
                     <DropDownPicker
                       open={opens}
                       value={valuess}
@@ -284,7 +293,7 @@ export default function BusinessSignup() {
                       setOpen={setOpens}
                       setValue={setValuess}
                       setItems={setItem}
-                      theme="DARK"
+                      theme="LIGHT"
                       mode="BADGE"
                       badgeDotColors={[
                         "#e76f51",
@@ -313,27 +322,6 @@ export default function BusinessSignup() {
                     <Checkbox.Item label="Small Business" status="unchecked" />
                     <Checkbox.Item label="Home based" status="unchecked" />
                   </View> */}
-                  <View style={{ marginBottom: 100 }}>
-                    <DropDownPicker
-                      open={open}
-                      value={value}
-                      items={items}
-                      setOpen={setOpen}
-                      setValue={setValue}
-                      setItems={setItems}
-                      theme="DARK"
-                      mode="BADGE"
-                      badgeDotColors={[
-                        "#e76f51",
-                        "#00b4d8",
-                        "#e9c46a",
-                        "#e76f51",
-                        "#8ac926",
-                        "#00b4d8",
-                        "#e9c46a",
-                      ]}
-                    />
-                  </View>
                   <View>
                     <Button
                       style={{
@@ -359,6 +347,27 @@ export default function BusinessSignup() {
                       Pick an logo
                     </Button>
                     {/* {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />} */}
+                  </View>
+                  <View style={{ marginBottom: 10 }}>
+                    <DropDownPicker
+                      open={open}
+                      value={value}
+                      items={items}
+                      setOpen={setOpen}
+                      setValue={setValue}
+                      setItems={setItems}
+                      theme="LIGHT"
+                      mode="BADGE"
+                      badgeDotColors={[
+                        "#e76f51",
+                        "#00b4d8",
+                        "#e9c46a",
+                        "#e76f51",
+                        "#8ac926",
+                        "#00b4d8",
+                        "#e9c46a",
+                      ]}
+                    />
                   </View>
                   <TextInput
                     onChangeText={handleChange("password")}
@@ -411,6 +420,7 @@ export default function BusinessSignup() {
                 </View>
               )}
             </Formik>
+            </ScrollView>
           </Card>
         </View>
       </ImageBackground>

@@ -52,7 +52,7 @@ export default function BusinessLogin() {
     }
   };
   var width = Dimensions.get("window").width;
-  var height = Dimensions.get("window").height;
+  var height = Dimensions.get("window").height * 1.1;
   return (
     <ImageBackground
       source={

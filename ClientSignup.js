@@ -15,11 +15,12 @@ import axios from "axios";
 import UerServices from "./Services/services/UserServices";
 export default function ClientSignup() {
   const navigation = useNavigation();
+
   const move = () => {
     navigation.navigate("ClientLogin");
   };
 
-  const handleSubmit = async () => {
+  const handleFormSubmit = async () => {
     try {
       const data = await UerServices.Register(
         values.name,
@@ -28,7 +29,8 @@ export default function ClientSignup() {
         values.confirmPassword,
         values.phoneNo
       ).then(() => {
-        navigation.navigate("ClientLogin");
+        console.log(data);
+        navigation.navigate("Clientlogin");
       });
     } catch (e) {
       alert(e.error);
@@ -36,8 +38,9 @@ export default function ClientSignup() {
   };
   const phoneRegex = RegExp(/^((\+92)?)(3)([0-9]{2})((-?)|( ?))([0-9]{7})$/gm);
   var width = Dimensions.get("window").width;
-  var height = Dimensions.get("window").height;
-    return (
+  var height = Dimensions.get("window").height * 1.1;
+    return ( 
+
     <ImageBackground
       source={
         {uri: "https://static.wixstatic.com/media/11062b_39eb5581b30f41099a77bce7636c50f6~mv2.jpg/v1/fill/w_1349,h_622,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_39eb5581b30f41099a77bce7636c50f6~mv2.jpg"}
@@ -67,7 +70,6 @@ export default function ClientSignup() {
           <Text
             style={{
               fontWeight: "bold",
-              textAlign: "start",
               marginBottom: 20,
               fontSize: 20,
             }}
@@ -79,9 +81,10 @@ export default function ClientSignup() {
               name: "",
               email: "",
               password: "",
-              phoneNo: "+92",
+              phoneNo: "",
               confirmPassword: "",
             }}
+            onSubmit={handleFormSubmit}
             validationSchema={Yup.object().shape({
               name: Yup.string()
                 .required("Name is Required")
@@ -108,24 +111,44 @@ export default function ClientSignup() {
                 }
               ),
             })}
-            onSubmit={handleSubmit}
+        
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
               <View>
+        
                 <TextInput
                   placeholder="Username"
-                  style={styles.Textfields}
+                  value={values.name}
+                  onChangeText={handleChange("name")}
+                  onBlur={handleBlur("name")}
+                  style={styles.Textfields}   
                 ></TextInput>
                 <TextInput
                   placeholder="Email"
+                  value={values.email}
+                  onChangeText={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  style={styles.Textfields}
+                ></TextInput>
+                            <TextInput
+                  placeholder="Phone Number"
+                  value={values.phoneNo}
+                  onChangeText={handleChange("phoneNo")}
+                  onBlur={handleBlur("phoneNo")}
                   style={styles.Textfields}
                 ></TextInput>
                 <TextInput
                   placeholder="Password"
+                  value={values.password}
+                  onChangeText={handleChange("password")}
+                  onBlur={handleBlur("password")}
                   style={styles.Textfields}
                 ></TextInput>
                 <TextInput
                   placeholder="Confirm Password"
+                  value={values.confirmPassword}
+                  onChangeText={handleChange("confirmPassword")}
+                  onBlur={handleBlur("confirmPassword")}
                   style={styles.Textfields}
                 ></TextInput>
                 <Button
@@ -141,10 +164,14 @@ export default function ClientSignup() {
                 >
                   Cancel
                 </Button>
+          
               </View>
             )}
           </Formik>
+         
         </Card>
+ 
+             
       </View>
     </ImageBackground>
   );

@@ -40,6 +40,7 @@ import PendingBookingSelectionPage from "./PendingBookingSelectionPage";
 import UserRequestPending from "./UserRequestPending";
 import UserPaymentPending from "./UserPaymentPending";
 import Trending from "./Trending";
+import Home from "./Home";
 
 const Stack = createNativeStackNavigator();
 
@@ -77,6 +78,13 @@ export default function App() {
           }}
           name="Business Dashboard"
           component={BusinessDashboard}
+        />
+                <Stack.Screen
+          screenOptions={{
+            headerShown: false,
+          }}
+          name="Home"
+          component={Home}
         />
         <Stack.Screen
           screenOptions={{
